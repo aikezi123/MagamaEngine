@@ -58,6 +58,6 @@ add_executable(${PROJECT_NAME} WIN32 main.cpp)
 # 目前只链接 Qt，等子模块的微型 CMake 补齐后，我们再把它们链进来
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Widgets          
-    # Magma_UI              
-    # Magma_Infrastructure  
+    Magma_UI              # <--- 取消注释！链接最外层的 UI
+    Magma_Infrastructure  # <--- 取消注释！链接最外层的底层实现
 )

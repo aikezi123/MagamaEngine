@@ -1,8 +1,8 @@
-# Install script for directory: F:/YQHCode/MyTest/MagmaEngine
+# Install script for directory: E:/code/MagamaEngine
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "F:/YQHCode/MyTest/MagmaEngine/out/install/x64-debug")
+  set(CMAKE_INSTALL_PREFIX "E:/code/MagamaEngine/out/install/x64-debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,15 +33,39 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("F:/YQHCode/MyTest/MagmaEngine/out/build/x64-debug/MagmaEngine/cmake_install.cmake")
+  # Include the install script for the subdirectory.
+  include("E:/code/MagamaEngine/out/build/x64-debug/Common/cmake_install.cmake")
+endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("E:/code/MagamaEngine/out/build/x64-debug/Domain/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("E:/code/MagamaEngine/out/build/x64-debug/Application/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("E:/code/MagamaEngine/out/build/x64-debug/InterfaceAdapters/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("E:/code/MagamaEngine/out/build/x64-debug/Infrastructure/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("E:/code/MagamaEngine/out/build/x64-debug/UI/cmake_install.cmake")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "F:/YQHCode/MyTest/MagmaEngine/out/build/x64-debug/install_local_manifest.txt"
+  file(WRITE "E:/code/MagamaEngine/out/build/x64-debug/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -57,6 +81,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "F:/YQHCode/MyTest/MagmaEngine/out/build/x64-debug/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "E:/code/MagamaEngine/out/build/x64-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
