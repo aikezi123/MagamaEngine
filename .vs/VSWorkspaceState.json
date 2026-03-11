@@ -14,15 +14,15 @@
   "ExpandedNodes": [
     "",
     "\\Application",
-    "\\Application\\GameLoop",
-    "\\assets",
+    "\\Assets",
     "\\Common",
-    "\\out",
-    "\\Service",
-    "\\Service\\Physics",
-    "\\UI",
-    "\\UI\\MainWindow"
+    "\\Domain",
+    "\\Infrastructure",
+    "\\Infrastructure\\IOSerialization",
+    "\\Infrastructure\\RenderOpenGL",
+    "\\InterfaceAdapters",
+    "\\out"
   ],
-  "SelectedNode": "\\UI\\RenderWidget",
+  "SelectedNode": "\\CMakeLists.txt",
   "PreviewInSolutionExplorer": false
 }
