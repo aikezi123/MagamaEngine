@@ -1,12 +1,14 @@
-file(GLOB_RECURSE SOURCES "*.cpp")
-file(GLOB_RECURSE HEADERS "*.h")
+ï»¿file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "*.cpp")
+file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS "*.h")
+
 if(NOT SOURCES)
     file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/dummy.cpp "")
     list(APPEND SOURCES ${CMAKE_CURRENT_BINARY_DIR}/dummy.cpp)
 endif()
 
-add_library(Magma_Domain SHARED ${SOURCES} ${HEADERS})
+# ã€æ ¸å¿ƒçº¢çº¿ã€‘ï¼šä¸šåŠ¡çµé­‚ï¼Œå¿…é¡»æ˜¯é™æ€åº“ï¼Œç‰©ç†éšèº«
+add_library(Magma_Domain STATIC ${SOURCES} ${HEADERS})
 target_include_directories(Magma_Domain PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-# ¡¾¼Ü¹¹ºìÏß¡¿ºËĞÄ²ã¼«Æä´¿¾»£¬Ö»ÔÊĞíÒÀÀµ Common µ××ù
+# çº¯å‡€ä¾èµ–ï¼šåªè®¤è¯†åº•åº§
 target_link_libraries(Magma_Domain PUBLIC Magma_Common)

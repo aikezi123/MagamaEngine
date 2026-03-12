@@ -1,39 +1,61 @@
 ﻿// ==========================================
 // Magma Engine - Composition Root (组合根)
-// 职责：依赖注入、组装系统、启动引擎
 // ==========================================
 
 #include <QApplication>
-#include <QMainWindow>
-#include <QLabel>
+#include <QPushButton> // <--- 新增：包含按钮的完整定义
+#include <QMessageBox>
+#include <memory>
+
+#include "MainWindow.h"
+
+// 引入我们的业务契约与底层实现
+#include "IImageProcessor.h"
+#include "OpenCVImageProcessor.h"
 
 int main(int argc, char* argv[])
 {
-    // 1. 初始化 Qt 的全局应用对象 (接管操作系统底层的事件循环)
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
+
     QApplication app(argc, argv);
 
     // =========================================================
-    // 阶段 A：依赖注入与装配 (Dependency Injection)
-    // 现在的架子已经搭好，未来我们会在这里 new 出各个底层的实现
+    // 阶段 A：依赖注入中心 
+    // 【修复】：乖乖把底层和大脑层的命名空间加回来！
     // =========================================================
+    std::shared_ptr<Magma::Application::IImageProcessor> imageProcessor =
+        std::make_shared<Magma::Infrastructure::OpenCVImageProcessor>();
 
-    // 2. 创建最简单的 UI 表现层 (临时验证架构是否跑通)
-    QMainWindow mainWindow;
-    mainWindow.setWindowTitle("Magma Engine v0.1.0 - Clean Architecture");
-    mainWindow.resize(1280, 720); // 设定一个标准的 720p 宽屏视窗
+    // 实例化主界面 (你的 MainWindow 是全局的，所以不需要加命名空间)
+    MainWindow mainWindow;
 
-    // 塞一个居中的文本作为我们成功跑通工具链的证明
-    QLabel* label = new QLabel("欢迎来到 Magma Engine!\n5+1 层顶级架构已完美点亮。", &mainWindow);
-    label->setAlignment(Qt::AlignCenter);
-    QFont font = label->font();
-    font.setPointSize(16);
-    label->setFont(font);
+    // =========================================================
+    // 阶段 B：业务接线
+    // =========================================================
+    // 测试：拦截名为 "btnTest" 的按钮的点击事件
+    QObject::connect(mainWindow.findChild<QPushButton*>("btnTest"), &QPushButton::clicked, [&]() {
 
-    mainWindow.setCentralWidget(label);
+        // 1. 模拟生成一张纯绿色的图片 (高100, 宽100)
+        cv::Mat testImage(100, 100, CV_8UC3, cv::Scalar(0, 255, 0));
 
-    // 3. 将界面呈现给用户
+        // 2. 调用万能抠图引擎 (抠除绿色)
+        cv::Mat resultImage = imageProcessor->removeBackgroundColor(testImage, cv::Scalar(0, 255, 0), 0);
+
+        if (!resultImage.empty() && resultImage.channels() == 4) {
+            QMessageBox::information(&mainWindow, "底层响应成功",
+                "OpenCV 引擎已成功运行！\n\n图片已增加 Alpha 通道，绿幕已完全移除。");
+        }
+        else {
+            QMessageBox::critical(&mainWindow, "错误", "底层 OpenCV 处理失败！");
+        }
+        });
+
+    // =========================================================
+    // 阶段 C：点火发射
+    // =========================================================
     mainWindow.show();
 
-    // 4. 将控制权彻底交给 Qt 的事件循环
     return app.exec();
 }

@@ -1,30 +1,24 @@
 {
-  "ExpandedNodes": [
-    "",
-    "\\Application",
-    "\\Assets",
-    "\\Common",
-    "\\Domain",
-    "\\Infrastructure",
-    "\\Infrastructure\\IOSerialization",
-    "\\Infrastructure\\RenderOpenGL",
-    "\\InterfaceAdapters",
-    "\\out"
-  ],
-  "SelectedNode": "\\main.cpp",
-  "PreviewInSolutionExplorer": false,
   "OutputFoldersPerTargetSystem": {
     "Local Machine": [
       "out\\build\\x64-debug",
       "out\\install\\x64-debug",
       "out\\build\\x64-release",
       "out\\install\\x64-release",
-      "out\\build\\x86-debug",
-      "out\\install\\x86-debug",
-      "out\\build\\x86-release",
-      "out\\install\\x86-release",
       "out\\build\\debug",
       "out\\build\\release"
     ]
-  }
+  },
+  "ExpandedNodes": [
+    "",
+    "\\Infrastructure\\AssetOpenCV",
+    "\\UI",
+    "\\UI\\Widgets",
+    "\\UI\\Widgets\\MainWindow",
+    "\\UI\\Widgets\\MainWindow\\include",
+    "\\UI\\Widgets\\MainWindow\\src",
+    "\\UI\\Widgets\\MainWindow\\ui"
+  ],
+  "SelectedNode": "\\UI\\CMakeLists.txt",
+  "PreviewInSolutionExplorer": false
 }
