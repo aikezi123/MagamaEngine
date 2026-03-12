@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTreeWidgetItem>
+#include "IImageProcessor.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -13,6 +14,8 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
+    // 【核心修改】：强迫 main.cpp 在创建 MainWindow 时，必须交出一把武器！
+    explicit MainWindow(std::shared_ptr<Magma::Application::IImageProcessor> processor, QWidget* parent = nullptr);
     explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
@@ -45,6 +48,9 @@ private:
 
 private:
     Ui::MainWindow* ui;
+
+    // 【新增】：保管好这把武器，准备一会发给具体的工具页
+    std::shared_ptr<Magma::Application::IImageProcessor> m_processor;
 };
 
 #endif // MAINWINDOW_HKO

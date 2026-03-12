@@ -11,14 +11,18 @@
   },
   "ExpandedNodes": [
     "",
+    "\\Application",
+    "\\Application\\ImageProcessing",
+    "\\Application\\ImageProcessing\\include",
+    "\\Infrastructure",
     "\\Infrastructure\\AssetOpenCV",
+    "\\Infrastructure\\AssetOpenCV\\include",
+    "\\Infrastructure\\AssetOpenCV\\src",
     "\\UI",
     "\\UI\\Widgets",
     "\\UI\\Widgets\\MainWindow",
-    "\\UI\\Widgets\\MainWindow\\include",
-    "\\UI\\Widgets\\MainWindow\\src",
-    "\\UI\\Widgets\\MainWindow\\ui"
+    "\\UI\\Widgets\\MainWindow\\src"
   ],
-  "SelectedNode": "\\UI\\CMakeLists.txt",
+  "SelectedNode": "\\UI\\Widgets\\Tools\\ui\\ImageMattingPage.ui",
   "PreviewInSolutionExplorer": false
 }

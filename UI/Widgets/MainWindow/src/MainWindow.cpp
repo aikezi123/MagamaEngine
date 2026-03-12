@@ -3,11 +3,27 @@
 #include <QSplitter>
 #include <QHBoxLayout>
 #include <QLabel>
+#include "ImageMattingPage.h"
 
 
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+// 1. 构造函数初始化列表里，接管这把武器 m_processor(std::move(processor))
+MainWindow::MainWindow(std::shared_ptr<Magma::Application::IImageProcessor> processor, QWidget* parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+    , m_processor(std::move(processor))
+{
+    ui->setupUi(this);
+    this->setWindowTitle("Magma Engine");
+    this->setFixedSize(1920, 1080);
+
+    initUIStyle();
+    connectSignals();
+    initPages();
 }
 
 MainWindow::MainWindow(QWidget* parent)
@@ -71,20 +87,28 @@ void MainWindow::initUIStyle() {
 }
 
 void MainWindow::initPages() {
-    // 定义通用的图标路径（如果你有不同的图标，可以在这里替换传入）
     QString defaultIcon = ":/Image/MainWindow/Image/MainWindow/Icon/rootIcon.png";
 
+    // ==========================================
+    // 极度干净的路由挂载逻辑
+    // ==========================================
+    auto toolsCategory = addCategoryNode("资产处理", defaultIcon);
 
+    // 实例化工具页，并将我们保管的武器 (m_processor) 发给它！
+    // 注意：这里我们不需要、也不能知道这把武器是不是 OpenCV 造的，我们只管传！
+    auto mattingPage = new ImageMattingPage(m_processor, this);
 
+    addBusinessPage(toolsCategory, "智能绿幕抠图", mattingPage);
 
     // 初始化时展开所有节点
     ui->treeWidget->expandAll();
 
     if (ui->treeWidget->topLevelItemCount() > 0) {
-        // 获取第 0 个顶级节点（也就是你最先添加的“首页”）并设置为当前选中项
         ui->treeWidget->setCurrentItem(ui->treeWidget->topLevelItem(0));
     }
 }
+
+
 
 void MainWindow::connectSignals() {
     //  1. 导航切换逻辑：通过 currentItemChanged 实现路由跳转
