@@ -46,9 +46,8 @@ find_package(OpenGL REQUIRED)
 add_subdirectory(Common)              # 第0层：基础货币
 add_subdirectory(Domain)              # 第1层：领域内核
 add_subdirectory(Application)         # 第2层：调度大脑
-add_subdirectory(InterfaceAdapters)   # 第3层：翻译官 (如果暂时没代码可以先注释掉)
-add_subdirectory(Infrastructure)      # 第4层：底层设施
-add_subdirectory(UI)                  # 第5层：表现层插件
+add_subdirectory(Infrastructure)      # 第3层：底层设施
+add_subdirectory(UI)                  # 第4层：表现层插件
 
 # ==========================================
 # 6. 上帝之手：组装车间与生成 .exe

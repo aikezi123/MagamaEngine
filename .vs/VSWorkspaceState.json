@@ -1,16 +1,4 @@
 {
-  "OutputFoldersPerTargetSystem": {
-    "Local Machine": [
-      "out\\build\\x64-debug",
-      "out\\install\\x64-debug",
-      "out\\build\\x64-release",
-      "out\\install\\x64-release",
-      "out\\build\\x86-debug",
-      "out\\install\\x86-debug",
-      "out\\build\\x86-release",
-      "out\\install\\x86-release"
-    ]
-  },
   "ExpandedNodes": [
     "",
     "\\Application",
@@ -24,5 +12,19 @@
     "\\out"
   ],
   "SelectedNode": "\\main.cpp",
-  "PreviewInSolutionExplorer": false
+  "PreviewInSolutionExplorer": false,
+  "OutputFoldersPerTargetSystem": {
+    "Local Machine": [
+      "out\\build\\x64-debug",
+      "out\\install\\x64-debug",
+      "out\\build\\x64-release",
+      "out\\install\\x64-release",
+      "out\\build\\x86-debug",
+      "out\\install\\x86-debug",
+      "out\\build\\x86-release",
+      "out\\install\\x86-release",
+      "out\\build\\debug",
+      "out\\build\\release"
+    ]
+  }
 }
