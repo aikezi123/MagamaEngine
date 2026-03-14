@@ -57,8 +57,4 @@ add_executable(${PROJECT_NAME} WIN32 main.cpp)
 # 终极大合体：将所有模块极其精准地注入宿主！
 target_link_libraries(${PROJECT_NAME} PRIVATE
     Qt6::Widgets          
-    Magma_UI                    # <--- 刚才可能漏了这根线！
-    Magma_Infra_AssetOpenCV     # 新版的底层重武器插件
-    Magma_App_ImageProcessing   # 新版的大脑契约模块
-    Magma_Common                # 基础底座
 )
